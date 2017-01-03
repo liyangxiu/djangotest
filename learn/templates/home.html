@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}welcome index{% endblock %}
+{% block content %}
+    {{ string }}
+    {% url 'add2' 4 5 as the_url %}
+    <a href="{{ the_url }}">计算4+5</a>
+    {% for i in TutorialList %}
+        {{ i }}
+    {% endfor %}<br/>
+    site:{{ info_dict.site }}
+    content:{{ info_dict.content }}<br/>
+    {% for key,value in info_dict.items %}
+        {{ key }}:{{ value }}
+    {% endfor %}<br/>
+
+    {% for item in List %}
+        {{ item }}{% if not forloop.last %},{% endif %}
+    {% endfor %}<br/>
+
+    <ul>
+    {% for athlate in athlete_list %}
+        <li>{{ athlete.name }}</li>
+    {% empty %}
+        <li>empty</li>
+    {% endfor %}
+    </ul>
+    {{ request.path }}
+{% endblock %}
